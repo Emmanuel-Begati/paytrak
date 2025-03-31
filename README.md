@@ -1,7 +1,7 @@
-# Credit Alert Tracker App
+# Paytrak
 
 ## Project Overview
-The Credit Alert Tracker App is a cross-platform mobile application designed to scan SMS messages for credit alerts related to student payments. It tracks the total received payments and provides users with a user-friendly interface to manage their transactions.
+The Paytrak is a cross-platform mobile application designed to scan SMS messages for credit alerts related to student payments. It tracks the total received payments and provides users with a user-friendly interface to manage their transactions.
 
 ## Tech Stack
 - **Frontend:** React Native (TypeScript)
