@@ -1,7 +1,5 @@
 import { Request, Response } from 'express';
-import { PrismaClient } from '@prisma/client';
-
-const prisma = new PrismaClient();
+import { prisma } from '../app';  // Import the global Prisma client
 
 // Fetch all transactions
 export const getTransactions = async (req: Request, res: Response) => {
@@ -9,24 +7,32 @@ export const getTransactions = async (req: Request, res: Response) => {
         const transactions = await prisma.transaction.findMany();
         res.status(200).json(transactions);
     } catch (error) {
+        console.error("Error fetching transactions:", error);
         res.status(500).json({ error: 'Failed to fetch transactions' });
     }
 };
 
-// Create a new transaction
 export const createTransaction = async (req: Request, res: Response) => {
     const { amount, sender, date } = req.body;
 
     try {
+        // Convert string date to Date object if needed
+        const parsedDate = date ? new Date(date) : new Date();
+        
+        // Log the received data for debugging
+        console.log("Creating transaction with data:", { amount, sender, date, parsedDate });
+        
         const newTransaction = await prisma.transaction.create({
             data: {
-                amount,
+                // Use the amount directly if it's already a number
+                amount: typeof amount === 'number' ? amount : parseFloat(amount),
                 sender,
-                date,
+                date: parsedDate,
             },
         });
         res.status(201).json(newTransaction);
     } catch (error) {
+        console.error("Transaction creation error:", error);
         res.status(500).json({ error: 'Failed to create transaction' });
     }
 };
