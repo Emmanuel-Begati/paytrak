@@ -1,0 +1,31 @@
+{
+  "name": "paytrak-backend",
+  "version": "1.0.0",
+  "description": "Backend for the Credit Alert Tracker App",
+  "main": "src/server.ts",
+  "scripts": {
+    "start": "ts-node src/server.ts",
+    "dev": "ts-node-dev src/server.ts",
+    "build": "tsc",
+    "lint": "eslint . --ext .ts"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "prisma": "^2.30.0",
+    "pg": "^8.7.1",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^4.4.3",
+    "ts-node": "^10.4.0",
+    "ts-node-dev": "^1.1.8",
+    "eslint": "^7.32.0",
+    "@types/node": "^16.11.7",
+    "@types/express": "^4.17.13"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
